@@ -1,27 +1,37 @@
 {
   "name": "tkplaceholder-remark-social-cards",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "Remark plugin for generating social images for my personal blog",
+  "repository": "https://github.com/yurkaninryan/tkplaceholder-remark-social-cards",
+  "author": "Ryan Yurkanin",
+  "license": "MIT",
+  "private": false,
   "scripts": {
-    "csa": "ts-node csa.ts",
-    "build": "tsc -p . && npm run csa",
-    "test": "node ./dist/index.js"
+    "prebuild": "npm run lint",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir .",
+    "lint": "eslint --ext .js src",
+    "prepublishOnly": "yarn build"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/jimp": "^0.2.28",
-    "@types/node": "^11.9.4",
-    "@types/shelljs": "^0.8.3",
-    "shelljs": "^0.8.3",
-    "ts-node": "^8.0.2",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^3.6.0"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "jimp": "^0.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.0",
+    "babel-preset-env": "^1.7.0",
+    "cross-env": "^5.1.5",
+    "eslint": "^5.3.0",
+    "eslint-config-prettier": "^3.0.1",
+    "husky": "^1.0.0-rc.13",
+    "lint-staged": "^8.1.4",
+    "prettier": "1.15.0"
+  },
+  "peerDependencies": {
+    "gatsby": ">=2.0.0"
   }
 }
