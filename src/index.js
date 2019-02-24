@@ -1,7 +1,7 @@
 import * as Jimp from "jimp";
 import * as path from "path";
 
-export async function createSocialCardForBlogPost({ markdownNode }) {
+module.exports = async ({ markdownNode }) => {
   const post = markdownNode.frontmatter;
 
   const output = path.join("./public", markdownNode.fields.slug, "seo.jpg");
@@ -22,5 +22,5 @@ export async function createSocialCardForBlogPost({ markdownNode }) {
   // tslint:disable-next-line
   console.log(`Created SEO Image for:  ${post.title}`);
 
-  await generatedImage.writeAsync(output);
-}
+  generatedImage.writeAsync(output);
+};

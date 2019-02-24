@@ -1,10 +1,5 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true,
-});
-exports.createSocialCardForBlogPost = createSocialCardForBlogPost;
-
 var _jimp = require("jimp");
 
 var Jimp = _interopRequireWildcard(_jimp);
@@ -29,7 +24,7 @@ function _interopRequireWildcard(obj) {
   }
 }
 
-async function createSocialCardForBlogPost({ markdownNode }) {
+module.exports = async ({ markdownNode }) => {
   const post = markdownNode.frontmatter;
 
   const output = path.join("./public", markdownNode.fields.slug, "seo.jpg");
@@ -50,5 +45,5 @@ async function createSocialCardForBlogPost({ markdownNode }) {
   // tslint:disable-next-line
   console.log(`Created SEO Image for:  ${post.title}`);
 
-  await generatedImage.writeAsync(output);
-}
+  generatedImage.writeAsync(output);
+};
