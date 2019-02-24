@@ -15,12 +15,12 @@ export async function createSocialCardForBlogPost({ markdownNode }) {
   const HEIGHT = 675;
   const PADDING = 40;
 
-  image
+  const generatedImage = await image
     .resize(WIDTH, HEIGHT)
     .print(msb80, PADDING, 140 + PADDING, post.title, WIDTH - PADDING * 2);
 
   // tslint:disable-next-line
   console.log(`Created SEO Image for:  ${post.title}`);
 
-  await image.writeAsync(output);
+  await generatedImage.writeAsync(output);
 }
