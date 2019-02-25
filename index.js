@@ -35,7 +35,7 @@ module.exports = async ({ markdownNode }) => {
   );
 
   const WIDTH = 1200;
-  const HEIGHT = 675;
+  const HEIGHT = 630;
   const PADDING = 40;
 
   const generatedImage = await image
